@@ -74,7 +74,7 @@ grid = GridSearchCV(pipe, param_grid, cv=inner_cv, scoring="recall", n_jobs=-1)
 outer_cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
 results = cross_validate(grid, X, y, cv=outer_cv,
-                         return_estimator=True, scoring=["accuracy", "precision", "recall", "f1"], return_train_score=True,
+                         return_estimator=True, scoring=["roc_auc", "accuracy", "precision", "recall", "f1"], return_train_score=True,
                          n_jobs=-1)
 
 print("\n" + "=" * 70)
@@ -114,6 +114,7 @@ print("Accuracy:", results["test_accuracy"].mean())
 print("Precision:", results["test_precision"].mean())
 print("Recall:", results["test_recall"].mean())
 print("F1:", results["test_f1"].mean())
+print("AUC:", results["test_roc_auc"].mean(), "±", results["test_roc_auc"].std())
 
 #----------------------
 #NAIVE BAYES
@@ -162,7 +163,7 @@ grid = GridSearchCV(pipe, param_grid, cv=inner_cv, scoring="recall", n_jobs=-1)
 outer_cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
 results = cross_validate(grid, X, y, cv=outer_cv,
-                         return_estimator=True, scoring=["accuracy", "precision", "recall", "f1"], return_train_score=True,
+                         return_estimator=True, scoring=["roc_auc", "accuracy", "precision", "recall", "f1"], return_train_score=True,
                          n_jobs=-1)
 
 print("\n" + "=" * 70)
@@ -202,6 +203,7 @@ print("Accuracy:", results["test_accuracy"].mean())
 print("Precision:", results["test_precision"].mean())
 print("Recall:", results["test_recall"].mean())
 print("F1:", results["test_f1"].mean())
+print("AUC:", results["test_roc_auc"].mean(), "±", results["test_roc_auc"].std())
 
 #----------------------
 #SVM
@@ -255,7 +257,7 @@ grid = GridSearchCV(pipe, param_grid, cv=inner_cv,
                     scoring="recall", n_jobs=-1)
 
 results = cross_validate(grid, X, y, cv=outer_cv,
-                         return_estimator=True, scoring=["accuracy", "precision", "recall", "f1"], return_train_score=True,
+                         return_estimator=True, scoring=["roc_auc", "accuracy", "precision", "recall", "f1"], return_train_score=True,
                          n_jobs=-1)
 
 print("\n" + "=" * 70)
@@ -295,6 +297,7 @@ print("Accuracy:", results["test_accuracy"].mean())
 print("Precision:", results["test_precision"].mean())
 print("Recall:", results["test_recall"].mean())
 print("F1:", results["test_f1"].mean())
+print("AUC:", results["test_roc_auc"].mean(), "±", results["test_roc_auc"].std())
 
 #----------------------
 #RNADOM FOREST
@@ -347,7 +350,7 @@ outer_cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 grid = GridSearchCV(pipe, param_grid, cv=inner_cv, scoring="recall", n_jobs=-1)
 
 results = cross_validate(grid, X, y, cv=outer_cv,
-                         return_estimator=True, scoring=["accuracy", "precision", "recall", "f1"], return_train_score=True,
+                         return_estimator=True, scoring=["roc_auc", "accuracy", "precision", "recall", "f1"], return_train_score=True,
                          n_jobs=-1)
 
 print("\n" + "=" * 70)
@@ -387,3 +390,4 @@ print("Accuracy:", results["test_accuracy"].mean())
 print("Precision:", results["test_precision"].mean())
 print("Recall:", results["test_recall"].mean())
 print("F1:", results["test_f1"].mean())
+print("AUC:", results["test_roc_auc"].mean(), "±", results["test_roc_auc"].std())
