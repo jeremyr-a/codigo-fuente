@@ -18,6 +18,7 @@ from sklearn.feature_selection import SelectFromModel, mutual_info_classif, Sele
 X = df.drop("target", axis=1)
 y = df["target"]
 
+roc_scores = {}
 #Secciones empleando extra trees y mutual information en cada tecnica
 
 #----------------------
@@ -77,6 +78,7 @@ results = cross_validate(grid, X, y, cv=outer_cv,
                          return_estimator=True, scoring=["roc_auc", "accuracy", "precision", "recall", "f1"], return_train_score=True,
                          n_jobs=-1)
 
+
 print("\n" + "=" * 70)
 print("Mejores hiperparámetros y variables seleccionadas por fold:")
 print("=" * 70)
@@ -110,11 +112,11 @@ print("\n" + "=" * 70)
 print("RESULTADOS FINALES:")
 print("=" * 70)
 
-print("Accuracy:", results["test_accuracy"].mean())
-print("Precision:", results["test_precision"].mean())
-print("Recall:", results["test_recall"].mean())
-print("F1:", results["test_f1"].mean())
-print("AUC:", results["test_roc_auc"].mean(), "±", results["test_roc_auc"].std())
+print("Accuracy:", results["test_accuracy"].mean(), "±", results["test_accuracy"].std())
+print("Precision:", results["test_precision"].mean(), "±", results["test_precision"].std())
+print("Recall:", results["test_recall"].mean(), "±", results["test_recall"].std())
+print("F1:", results["test_f1"].mean(), "±", results["test_f1"].std())
+
 
 #----------------------
 #NAIVE BAYES
@@ -199,11 +201,10 @@ print("\n" + "=" * 70)
 print("RESULTADOS FINALES:")
 print("=" * 70)
 
-print("Accuracy:", results["test_accuracy"].mean())
-print("Precision:", results["test_precision"].mean())
-print("Recall:", results["test_recall"].mean())
-print("F1:", results["test_f1"].mean())
-print("AUC:", results["test_roc_auc"].mean(), "±", results["test_roc_auc"].std())
+print("Accuracy:", results["test_accuracy"].mean(), "±", results["test_accuracy"].std())
+print("Precision:", results["test_precision"].mean(), "±", results["test_precision"].std())
+print("Recall:", results["test_recall"].mean(), "±", results["test_recall"].std())
+print("F1:", results["test_f1"].mean(), "±", results["test_f1"].std())
 
 #----------------------
 #SVM
@@ -293,11 +294,11 @@ print("\n" + "=" * 70)
 print("RESULTADOS FINALES:")
 print("=" * 70)
 
-print("Accuracy:", results["test_accuracy"].mean())
-print("Precision:", results["test_precision"].mean())
-print("Recall:", results["test_recall"].mean())
-print("F1:", results["test_f1"].mean())
-print("AUC:", results["test_roc_auc"].mean(), "±", results["test_roc_auc"].std())
+print("Accuracy:", results["test_accuracy"].mean(), "±", results["test_accuracy"].std())
+print("Precision:", results["test_precision"].mean(), "±", results["test_precision"].std())
+print("Recall:", results["test_recall"].mean(), "±", results["test_recall"].std())
+print("F1:", results["test_f1"].mean(), "±", results["test_f1"].std())
+
 
 #----------------------
 #RNADOM FOREST
@@ -386,8 +387,8 @@ print("\n" + "=" * 70)
 print("RESULTADOS FINALES:")
 print("=" * 70)
 
-print("Accuracy:", results["test_accuracy"].mean())
-print("Precision:", results["test_precision"].mean())
-print("Recall:", results["test_recall"].mean())
-print("F1:", results["test_f1"].mean())
-print("AUC:", results["test_roc_auc"].mean(), "±", results["test_roc_auc"].std())
+print("Accuracy:", results["test_accuracy"].mean(), "±", results["test_accuracy"].std())
+print("Precision:", results["test_precision"].mean(), "±", results["test_precision"].std())
+print("Recall:", results["test_recall"].mean(), "±", results["test_recall"].std())
+print("F1:", results["test_f1"].mean(), "±", results["test_f1"].std())
+
